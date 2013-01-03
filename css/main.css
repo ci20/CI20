@@ -7,6 +7,29 @@ body
 	background: #EFEFEF;
 }
 
+#glassbox
+{
+	background:#333;
+	border:1px solid #000;
+	height:400px;
+	margin:30px auto auto auto;
+	position:relative;
+	width:960px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#element
+{
+	background:#FFFFFF;
+	border:1px #000 solid;
+	cursor:move;
+	padding:10px 10px 10px 10px;
+	width:202px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
 #page
 {
 	margin-top: 5px;

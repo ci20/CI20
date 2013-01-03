@@ -3,18 +3,33 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#element").draggable({ 
+				containment: '#glassbox', 
+				scroll: false
+		 }).mousemove(function(){
+						var coord = $(this).position();
+						$("p:last").text( "left: " + coord.left + ", top: " + coord.top );
+		 }).mouseup(function(){ 
+				var coords=[];
+				var coord = $(this).position();
+				var item={ coordTop:  coord.left, coordLeft: coord.top  };
+			   	coords.push(item);
+				var order = { coords: coords };
+				$.post('updatecoords.php', 'data='+$.toJSON(order), function(response){
+						if(response == "success")
+							$("#respond").html('<div class="success">X and Y Coordinates Saved!</div>').hide().fadeIn(1000);
+							setTimeout(function(){ $('#respond').fadeOut(1000); }, 2000);
+						});	
+				});
+						
+		});
+</script>
 
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<div id="glassbox">  
+	<div id="element">Move the Box</div>  
+</div>  
+<div id="respond"></div>  
