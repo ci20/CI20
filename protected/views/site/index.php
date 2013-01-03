@@ -30,6 +30,20 @@ $this->pageTitle=Yii::app()->name;
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <div id="glassbox">  
-	<div id="element">Move the Box</div>  
+	<div id="element"><?php echo $this->widget('UserCreateWidget', array(), true); ?></div>
+	
+	<?php 
+	/*
+		//Create a query to fetch our values from the database  
+		$get_coords = mysqli_query($link, "SELECT * FROM coords");  
+		//We then set variables from the * array that is fetched from the database  
+		while($row = mysqli_fetch_array($get_coords)) {  
+			$x = $row['x_pos'];  
+			$y = $row['y_pos'];  
+			//then echo our div element with CSS properties to set the left(x) and top(y) values of the element  
+			echo '<div id="element" style="left:'.$x.'px; top:'.$y.'px;"><img src="nettuts.jpg" alt="Nettuts+" />Move the Box<p></p></div>';  
+		} 
+	 */
+	?>
 </div>  
 <div id="respond"></div>  
